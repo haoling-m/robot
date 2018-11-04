@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.4 (Python 3.5.3 on linux)" generated="20181103 20:43:42.626">
+<suite id="s1" source="/home/haoling/Work/robot/example.robot" name="Example">
+<kw library="example_resource" type="setup" name="Open Browser And Go To Google">
+<kw library="Selenium2Library" name="Open Browser">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>https://www.google.ca</arg>
+<arg>Chrome</arg>
+</arguments>
+<msg level="INFO" timestamp="20181103 20:43:43.781">Opening browser 'Chrome' to base url 'https://www.google.ca'.</msg>
+<status endtime="20181103 20:44:00.856" status="PASS" starttime="20181103 20:43:43.781"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Return Status">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Wait Until Page Contains Element</arg>
+<arg>okta-signin-username</arg>
+<arg>10s</arg>
+</arguments>
+<assign>
+<var>${zScalerAppeared}</var>
+</assign>
+<kw library="Selenium2Library" name="Wait Until Page Contains Element">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>okta-signin-username</arg>
+<arg>10s</arg>
+</arguments>
+<kw library="Selenium2Library" name="Capture Page Screenshot">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg level="INFO" timestamp="20181103 20:44:11.372" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status endtime="20181103 20:44:11.373" status="PASS" starttime="20181103 20:44:11.066"></status>
+</kw>
+<msg level="FAIL" timestamp="20181103 20:44:11.549">Element 'okta-signin-username' did not appear in 10 seconds.</msg>
+<status endtime="20181103 20:44:11.549" status="FAIL" starttime="20181103 20:44:00.858"></status>
+</kw>
+<msg level="INFO" timestamp="20181103 20:44:11.549">${zScalerAppeared} = False</msg>
+<status endtime="20181103 20:44:11.549" status="PASS" starttime="20181103 20:44:00.857"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${zScalerAppeared}</arg>
+<arg>Input Text</arg>
+<arg>okta-signin-username</arg>
+<arg>your.name@codanradio.com</arg>
+</arguments>
+<status endtime="20181103 20:44:11.550" status="PASS" starttime="20181103 20:44:11.550"></status>
+</kw>
+<kw library="Selenium2Library" name="Wait Until Page Contains Element">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>lga</arg>
+<arg>30s</arg>
+</arguments>
+<status endtime="20181103 20:44:11.599" status="PASS" starttime="20181103 20:44:11.551"></status>
+</kw>
+<kw library="BuiltIn" name="Log To Console">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>\nOpened browser to Google wahoo\n</arg>
+</arguments>
+<status endtime="20181103 20:44:11.600" status="PASS" starttime="20181103 20:44:11.600"></status>
+</kw>
+<status endtime="20181103 20:44:11.601" status="PASS" starttime="20181103 20:43:43.778"></status>
+</kw>
+<test id="s1-t1" name="My Test 1">
+<kw name="Log Text">
+<arguments>
+<arg>${value1}</arg>
+</arguments>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${TEST NAME}'=='Test Case 3'</arg>
+<arg>Handle List</arg>
+<arg>${arg}</arg>
+<arg>ELSE</arg>
+<arg>Log To Console</arg>
+<arg>${arg}</arg>
+</arguments>
+<kw library="BuiltIn" name="Log To Console">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${arg}</arg>
+</arguments>
+<status endtime="20181103 20:44:11.605" status="PASS" starttime="20181103 20:44:11.604"></status>
+</kw>
+<status endtime="20181103 20:44:11.605" status="PASS" starttime="20181103 20:44:11.604"></status>
+</kw>
+<status endtime="20181103 20:44:11.605" status="PASS" starttime="20181103 20:44:11.603"></status>
+</kw>
+<status critical="yes" endtime="20181103 20:44:11.606" status="PASS" starttime="20181103 20:44:11.601"></status>
+</test>
+<test id="s1-t2" name="My Test 2">
+<kw name="Log Text">
+<arguments>
+<arg>${value2}</arg>
+</arguments>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${TEST NAME}'=='Test Case 3'</arg>
+<arg>Handle List</arg>
+<arg>${arg}</arg>
+<arg>ELSE</arg>
+<arg>Log To Console</arg>
+<arg>${arg}</arg>
+</arguments>
+<kw library="BuiltIn" name="Log To Console">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${arg}</arg>
+</arguments>
+<status endtime="20181103 20:44:11.611" status="PASS" starttime="20181103 20:44:11.611"></status>
+</kw>
+<status endtime="20181103 20:44:11.611" status="PASS" starttime="20181103 20:44:11.610"></status>
+</kw>
+<status endtime="20181103 20:44:11.612" status="PASS" starttime="20181103 20:44:11.609"></status>
+</kw>
+<status critical="yes" endtime="20181103 20:44:11.612" status="PASS" starttime="20181103 20:44:11.607"></status>
+</test>
+<test id="s1-t3" name="Test Case 3">
+<kw name="Log Text">
+<arguments>
+<arg>${list}</arg>
+</arguments>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${TEST NAME}'=='Test Case 3'</arg>
+<arg>Handle List</arg>
+<arg>${arg}</arg>
+<arg>ELSE</arg>
+<arg>Log To Console</arg>
+<arg>${arg}</arg>
+</arguments>
+<kw name="Handle List">
+<arguments>
+<arg>${arg}</arg>
+</arguments>
+<kw type="for" name="${item} IN [ ${listArg} ]">
+<kw type="foritem" name="${item} = ['1', '2', 'three', 'four']">
+<kw library="BuiltIn" name="Log To Console">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>\n${item</arg>
+</arguments>
+<status endtime="20181103 20:44:11.617" status="PASS" starttime="20181103 20:44:11.617"></status>
+</kw>
+<status endtime="20181103 20:44:11.617" status="PASS" starttime="20181103 20:44:11.616"></status>
+</kw>
+<status endtime="20181103 20:44:11.617" status="PASS" starttime="20181103 20:44:11.616"></status>
+</kw>
+<status endtime="20181103 20:44:11.618" status="PASS" starttime="20181103 20:44:11.615"></status>
+</kw>
+<status endtime="20181103 20:44:11.618" status="PASS" starttime="20181103 20:44:11.615"></status>
+</kw>
+<status endtime="20181103 20:44:11.618" status="PASS" starttime="20181103 20:44:11.614"></status>
+</kw>
+<status critical="yes" endtime="20181103 20:44:11.619" status="PASS" starttime="20181103 20:44:11.613"></status>
+</test>
+<kw library="Selenium2Library" type="teardown" name="Close Browser">
+<doc>Closes the current browser.</doc>
+<status endtime="20181103 20:44:11.692" status="PASS" starttime="20181103 20:44:11.620"></status>
+</kw>
+<doc>Base robot file for lab</doc>
+<status endtime="20181103 20:44:11.692" status="PASS" starttime="20181103 20:43:42.629"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="3">Critical Tests</stat>
+<stat fail="0" pass="3">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat id="s1" fail="0" pass="3" name="Example">Example</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

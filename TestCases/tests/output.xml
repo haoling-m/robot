@@ -1,0 +1,3360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20181002 11:58:03.549" generator="Robot 3.0.4 (Python 2.7.8 on win32)">
+<suite source="C:\Python27\TestCases\tests\login_valid.robot" id="s1" name="Login Valid">
+<kw type="setup" name="Set API And Open Browser To Login Page" library="navigation_resource">
+<kw name="Set API Variables" library="testrail_api_resource">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<assign>
+<var>${Comments List}</var>
+</assign>
+<msg timestamp="20181002 11:58:03.937" level="INFO">${Comments List} = []</msg>
+<status status="PASS" endtime="20181002 11:58:03.937" starttime="20181002 11:58:03.937"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:03.937" level="INFO">${Comments List} = []</msg>
+<status status="PASS" endtime="20181002 11:58:03.937" starttime="20181002 11:58:03.937"></status>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<doc>Returns the given time in the requested format.</doc>
+<arguments>
+<arg>epoch</arg>
+</arguments>
+<assign>
+<var>${time start}</var>
+</assign>
+<msg timestamp="20181002 11:58:03.937" level="INFO">${time start} = 1538506683</msg>
+<status status="PASS" endtime="20181002 11:58:03.937" starttime="20181002 11:58:03.937"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${time start}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:03.937" level="INFO">${time start} = 1538506683</msg>
+<status status="PASS" endtime="20181002 11:58:03.937" starttime="20181002 11:58:03.937"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Get File</arg>
+<arg>${TestRunFile}</arg>
+</arguments>
+<assign>
+<var>${TestRunFile Exists}</var>
+</assign>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>${TestRunFile}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:03.937" html="yes" level="INFO">Getting file '&lt;a href="file://C:\Python27\TestCases\tests\test_run_id"&gt;C:\Python27\TestCases\tests\test_run_id&lt;/a&gt;'.</msg>
+<msg timestamp="20181002 11:58:03.937" level="FAIL">IOError: [Errno 2] No such file or directory: u'C:\\Python27\\TestCases\\tests\\test_run_id'</msg>
+<status status="FAIL" endtime="20181002 11:58:03.937" starttime="20181002 11:58:03.937"></status>
+</kw>
+<msg timestamp="20181002 11:58:03.937" level="INFO">${TestRunFile Exists} = False</msg>
+<status status="PASS" endtime="20181002 11:58:03.937" starttime="20181002 11:58:03.937"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${TestRunFile Exists}</arg>
+<arg>Run Keywords</arg>
+<arg>Set Test Run ID</arg>
+<arg>AND</arg>
+<arg>Set Test Case ID</arg>
+<arg>AND</arg>
+<arg>Set Suite Variable</arg>
+<arg>${API Endpoint}</arg>
+<arg>/add_result_for_case/${TestRunID}/${TestCaseID}</arg>
+<arg>ELSE</arg>
+<arg>Set Suite Variable</arg>
+<arg>${API Endpoint}</arg>
+<arg>/add_result/2850</arg>
+</arguments>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${API Endpoint}</arg>
+<arg>/add_result/2850</arg>
+</arguments>
+<msg timestamp="20181002 11:58:03.937" level="INFO">${API Endpoint} = /add_result/2850</msg>
+<status status="PASS" endtime="20181002 11:58:03.937" starttime="20181002 11:58:03.937"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:03.937" starttime="20181002 11:58:03.937"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:03.937" starttime="20181002 11:58:03.937"></status>
+</kw>
+<kw name="Open Browser To Login Page" library="navigation_resource">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:03.947" level="INFO">Chrome</msg>
+<status status="PASS" endtime="20181002 11:58:03.947" starttime="20181002 11:58:03.937"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${BROWSER}'=='Firefox'</arg>
+<arg>Run Keywords</arg>
+<arg>Set Browser For Firefox</arg>
+<arg>AND</arg>
+<arg>Open Browser</arg>
+<arg>${loginURL}</arg>
+<arg>${BROWSER}</arg>
+<arg>ELSE IF</arg>
+<arg>'${BROWSER}'=='Ie'</arg>
+<arg>Run Keywords</arg>
+<arg>Create Webdriver</arg>
+<arg>${BROWSER}</arg>
+<arg>AND</arg>
+<arg>Go To</arg>
+<arg>${loginURL}</arg>
+<arg>ELSE</arg>
+<arg>Open Browser</arg>
+<arg>${loginURL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${loginURL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:03.947" level="INFO">Opening browser 'Chrome' to base url 'http://192.168.66.148/'.</msg>
+<status status="PASS" endtime="20181002 11:58:08.197" starttime="20181002 11:58:03.947"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:08.197" starttime="20181002 11:58:03.947"></status>
+</kw>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${browserDelay}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:08.198" starttime="20181002 11:58:08.197"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="navigation_resource">
+<arguments>
+<arg>5s</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:08.498" starttime="20181002 11:58:08.198"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:08.777" starttime="20181002 11:58:08.498"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:09.047" starttime="20181002 11:58:08.777"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${addressCheck}</arg>
+<arg>Location Should Be</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${loginURL}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:09.305" level="INFO">Current location is 'http://192.168.66.148/'.</msg>
+<status status="PASS" endtime="20181002 11:58:09.305" starttime="20181002 11:58:09.047"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:09.305" starttime="20181002 11:58:09.047"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:09.305" starttime="20181002 11:58:08.198"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:09.305" starttime="20181002 11:58:03.937"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:09.305" starttime="20181002 11:58:03.937"></status>
+</kw>
+<test id="s1-t1" name="Valid Login 01">
+<kw name="Valid Login">
+<arguments>
+<arg>${VALID USER}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Comment}</arg>
+<arg>${TEST NAME} - Username: ${username}, Password: ${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:09.305" level="INFO">${Comment} = Valid Login 01 - Username: p25admin, Password: p25admin</msg>
+<status status="PASS" endtime="20181002 11:58:09.305" starttime="20181002 11:58:09.305"></status>
+</kw>
+<kw name="Login User With Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Login User Without Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:09.305" level="INFO">Typing text 'p25admin' into text field 'lgn_uname'.</msg>
+<status status="PASS" endtime="20181002 11:58:10.137" starttime="20181002 11:58:09.305"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:10.138" level="INFO">Typing text 'p25admin' into text field 'lgn_upassw'.</msg>
+<status status="PASS" endtime="20181002 11:58:11.015" starttime="20181002 11:58:10.137"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:11.015" level="INFO">Clicking button 'lgn_submit'.</msg>
+<status status="PASS" endtime="20181002 11:58:12.117" starttime="20181002 11:58:11.015"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:12.117" starttime="20181002 11:58:09.305"></status>
+</kw>
+<kw name="Welcome Page Should Be Open" library="navigation_resource">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>EULA Page Is Open</arg>
+</arguments>
+<assign>
+<var>${EulaPageOpen}</var>
+</assign>
+<kw name="EULA Page Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${eulaPage}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:58:17.857" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-52.png"&gt;&lt;img src="selenium-screenshot-52.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:58:17.857" starttime="20181002 11:58:17.218"></status>
+</kw>
+<msg timestamp="20181002 11:58:17.857" level="FAIL">Element 'id=eula_main_view' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:58:17.857" starttime="20181002 11:58:12.117"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:17.857" starttime="20181002 11:58:12.117"></status>
+</kw>
+<msg timestamp="20181002 11:58:17.857" level="INFO">${EulaPageOpen} = False</msg>
+<status status="PASS" endtime="20181002 11:58:17.857" starttime="20181002 11:58:12.117"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${EulaPageOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${eulaPageOK}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:17.857" starttime="20181002 11:58:17.857"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:58:23.628" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-53.png"&gt;&lt;img src="selenium-screenshot-53.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:58:23.628" starttime="20181002 11:58:22.987"></status>
+</kw>
+<msg timestamp="20181002 11:58:23.628" level="FAIL">Element 'id=gen-dialog-text' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:58:23.628" starttime="20181002 11:58:17.857"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:23.628" starttime="20181002 11:58:17.857"></status>
+</kw>
+<msg timestamp="20181002 11:58:23.628" level="INFO">${PasswordDialogOpen} = False</msg>
+<status status="PASS" endtime="20181002 11:58:23.628" starttime="20181002 11:58:17.857"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:23.628" starttime="20181002 11:58:23.628"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioChannel}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:58:29.414" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-54.png"&gt;&lt;img src="selenium-screenshot-54.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:58:29.414" starttime="20181002 11:58:28.767"></status>
+</kw>
+<msg timestamp="20181002 11:58:29.414" level="FAIL">Element 'edit_radio_channel' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:58:29.414" starttime="20181002 11:58:23.628"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:29.414" starttime="20181002 11:58:12.117"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:29.414" starttime="20181002 11:58:09.305"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:29.414" starttime="20181002 11:58:09.305"></status>
+</kw>
+<kw type="teardown" name="Teardown Test" library="testrail_api_resource">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:29.414" starttime="20181002 11:58:29.414"></status>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:29.414" starttime="20181002 11:58:29.414"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:29.414" starttime="20181002 11:58:29.414"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:29.414" starttime="20181002 11:58:29.414"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:29.424" critical="yes" starttime="20181002 11:58:09.305">Element 'edit_radio_channel' not visible after 5 seconds.</status>
+</test>
+<test id="s1-t2" name="Valid Login 02">
+<kw name="Valid Login">
+<arguments>
+<arg>${VALID USER}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Comment}</arg>
+<arg>${TEST NAME} - Username: ${username}, Password: ${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:29.424" level="INFO">${Comment} = Valid Login 02 - Username: p25admin, Password: p25admin</msg>
+<status status="PASS" endtime="20181002 11:58:29.424" starttime="20181002 11:58:29.424"></status>
+</kw>
+<kw name="Login User With Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Login User Without Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:29.424" level="INFO">Typing text 'p25admin' into text field 'lgn_uname'.</msg>
+<status status="PASS" endtime="20181002 11:58:30.241" starttime="20181002 11:58:29.424"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:30.241" level="INFO">Typing text 'p25admin' into text field 'lgn_upassw'.</msg>
+<status status="PASS" endtime="20181002 11:58:31.064" starttime="20181002 11:58:30.241"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:31.064" level="INFO">Clicking button 'lgn_submit'.</msg>
+<status status="PASS" endtime="20181002 11:58:32.127" starttime="20181002 11:58:31.064"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:32.128" starttime="20181002 11:58:29.424"></status>
+</kw>
+<kw name="Welcome Page Should Be Open" library="navigation_resource">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>EULA Page Is Open</arg>
+</arguments>
+<assign>
+<var>${EulaPageOpen}</var>
+</assign>
+<kw name="EULA Page Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${eulaPage}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:58:37.887" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-55.png"&gt;&lt;img src="selenium-screenshot-55.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:58:37.887" starttime="20181002 11:58:37.200"></status>
+</kw>
+<msg timestamp="20181002 11:58:37.887" level="FAIL">Element 'id=eula_main_view' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:58:37.887" starttime="20181002 11:58:32.131"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:37.887" starttime="20181002 11:58:32.129"></status>
+</kw>
+<msg timestamp="20181002 11:58:37.887" level="INFO">${EulaPageOpen} = False</msg>
+<status status="PASS" endtime="20181002 11:58:37.887" starttime="20181002 11:58:32.129"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${EulaPageOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${eulaPageOK}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:37.887" starttime="20181002 11:58:37.887"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:58:43.675" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-56.png"&gt;&lt;img src="selenium-screenshot-56.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:58:43.675" starttime="20181002 11:58:42.971"></status>
+</kw>
+<msg timestamp="20181002 11:58:43.676" level="FAIL">Element 'id=gen-dialog-text' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:58:43.676" starttime="20181002 11:58:37.887"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:43.676" starttime="20181002 11:58:37.887"></status>
+</kw>
+<msg timestamp="20181002 11:58:43.676" level="INFO">${PasswordDialogOpen} = False</msg>
+<status status="PASS" endtime="20181002 11:58:43.676" starttime="20181002 11:58:37.887"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:43.677" starttime="20181002 11:58:43.677"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioChannel}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:58:49.407" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-57.png"&gt;&lt;img src="selenium-screenshot-57.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:58:49.407" starttime="20181002 11:58:48.767"></status>
+</kw>
+<msg timestamp="20181002 11:58:49.407" level="FAIL">Element 'edit_radio_channel' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:58:49.407" starttime="20181002 11:58:43.677"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:49.407" starttime="20181002 11:58:32.128"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:49.407" starttime="20181002 11:58:29.424"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:49.407" starttime="20181002 11:58:29.424"></status>
+</kw>
+<kw type="teardown" name="Teardown Test" library="testrail_api_resource">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:49.407" starttime="20181002 11:58:49.407"></status>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:49.407" starttime="20181002 11:58:49.407"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:49.407" starttime="20181002 11:58:49.407"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:49.407" starttime="20181002 11:58:49.407"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:49.417" critical="yes" starttime="20181002 11:58:29.424">Element 'edit_radio_channel' not visible after 5 seconds.</status>
+</test>
+<test id="s1-t3" name="Valid Login 03">
+<kw name="Valid Login">
+<arguments>
+<arg>${VALID USER}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Comment}</arg>
+<arg>${TEST NAME} - Username: ${username}, Password: ${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:49.417" level="INFO">${Comment} = Valid Login 03 - Username: p25admin, Password: p25admin</msg>
+<status status="PASS" endtime="20181002 11:58:49.417" starttime="20181002 11:58:49.417"></status>
+</kw>
+<kw name="Login User With Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Login User Without Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:49.417" level="INFO">Typing text 'p25admin' into text field 'lgn_uname'.</msg>
+<status status="PASS" endtime="20181002 11:58:50.289" starttime="20181002 11:58:49.417"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:50.289" level="INFO">Typing text 'p25admin' into text field 'lgn_upassw'.</msg>
+<status status="PASS" endtime="20181002 11:58:51.120" starttime="20181002 11:58:50.289"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:51.120" level="INFO">Clicking button 'lgn_submit'.</msg>
+<status status="PASS" endtime="20181002 11:58:52.186" starttime="20181002 11:58:51.120"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:52.186" starttime="20181002 11:58:49.417"></status>
+</kw>
+<kw name="Welcome Page Should Be Open" library="navigation_resource">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>EULA Page Is Open</arg>
+</arguments>
+<assign>
+<var>${EulaPageOpen}</var>
+</assign>
+<kw name="EULA Page Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${eulaPage}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:58:57.818" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-58.png"&gt;&lt;img src="selenium-screenshot-58.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:58:57.818" starttime="20181002 11:58:57.240"></status>
+</kw>
+<msg timestamp="20181002 11:58:57.818" level="FAIL">Element 'id=eula_main_view' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:58:57.818" starttime="20181002 11:58:52.186"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:58:57.818" starttime="20181002 11:58:52.186"></status>
+</kw>
+<msg timestamp="20181002 11:58:57.818" level="INFO">${EulaPageOpen} = False</msg>
+<status status="PASS" endtime="20181002 11:58:57.818" starttime="20181002 11:58:52.186"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${EulaPageOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${eulaPageOK}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:57.818" starttime="20181002 11:58:57.818"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:58.356" starttime="20181002 11:58:57.818"></status>
+</kw>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+<arg>${passwordDialogValue}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:58.898" level="INFO">Element 'id=gen-dialog-text' contains text 'Factory default password must be changed'.</msg>
+<status status="PASS" endtime="20181002 11:58:58.898" starttime="20181002 11:58:58.356"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:58.898" starttime="20181002 11:58:57.818"></status>
+</kw>
+<msg timestamp="20181002 11:58:58.898" level="INFO">${PasswordDialogOpen} = True</msg>
+<status status="PASS" endtime="20181002 11:58:58.898" starttime="20181002 11:58:57.818"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Visible Do Action" library="utility_resource">
+<arguments>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:58:59.428" starttime="20181002 11:58:58.898"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${fieldType}"=="${textBox}"</arg>
+<arg>Run Keywords</arg>
+<arg>Run Keyword If</arg>
+<arg>'${BROWSER}'=='Firefox'</arg>
+<arg>Backspace Delete</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Clear Element Text</arg>
+<arg>${fieldID}</arg>
+<arg>AND</arg>
+<arg>Input Text</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${dropdownList}"</arg>
+<arg>Select From List</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${checkBox}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${radioButton}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${clickable}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>Field Type Not Recognized</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<msg timestamp="20181002 11:58:59.428" level="INFO">Clicking element 'gen-dialog-cancel'.</msg>
+<status status="PASS" endtime="20181002 11:58:59.971" starttime="20181002 11:58:59.428"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:59.971" starttime="20181002 11:58:59.428"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:59.971" starttime="20181002 11:58:58.898"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:58:59.971" starttime="20181002 11:58:58.898"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioChannel}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:00.528" starttime="20181002 11:58:59.972"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioName}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:01.067" starttime="20181002 11:59:00.528"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:01.067" starttime="20181002 11:58:52.186"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:01.067" starttime="20181002 11:58:49.417"></status>
+</kw>
+<kw name="Log Out User" library="navigation_resource">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutLink}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:01.067" level="INFO">Clicking element 'nav_grp_user'.</msg>
+<status status="PASS" endtime="20181002 11:59:01.644" starttime="20181002 11:59:01.067"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:01.644" level="INFO">Clicking element 'nav_btn_logout'.</msg>
+<status status="PASS" endtime="20181002 11:59:02.214" starttime="20181002 11:59:01.644"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="navigation_resource">
+<arguments>
+<arg>5s</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:02.972" starttime="20181002 11:59:02.215"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:03.243" starttime="20181002 11:59:02.972"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:03.525" starttime="20181002 11:59:03.243"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${addressCheck}</arg>
+<arg>Location Should Be</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${loginURL}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:03.780" level="INFO">Current location is 'http://192.168.66.148/'.</msg>
+<status status="PASS" endtime="20181002 11:59:03.780" starttime="20181002 11:59:03.525"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:03.780" starttime="20181002 11:59:03.525"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:03.780" starttime="20181002 11:59:02.214"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:03.780" starttime="20181002 11:59:01.067"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:03.780" starttime="20181002 11:58:49.417"></status>
+</kw>
+<kw type="teardown" name="Teardown Test" library="testrail_api_resource">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:03.780" starttime="20181002 11:59:03.780"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:03.780" starttime="20181002 11:59:03.780"></status>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:03.780" starttime="20181002 11:59:03.780"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:03.780" starttime="20181002 11:59:03.780"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:03.780" critical="yes" starttime="20181002 11:58:49.417"></status>
+</test>
+<test id="s1-t4" name="Valid Login 04">
+<kw name="Valid Login">
+<arguments>
+<arg>${VALID USER}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Comment}</arg>
+<arg>${TEST NAME} - Username: ${username}, Password: ${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:03.790" level="INFO">${Comment} = Valid Login 04 - Username: p25admin, Password: p25admin</msg>
+<status status="PASS" endtime="20181002 11:59:03.790" starttime="20181002 11:59:03.780"></status>
+</kw>
+<kw name="Login User With Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Login User Without Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:03.790" level="INFO">Typing text 'p25admin' into text field 'lgn_uname'.</msg>
+<status status="PASS" endtime="20181002 11:59:04.638" starttime="20181002 11:59:03.790"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:04.638" level="INFO">Typing text 'p25admin' into text field 'lgn_upassw'.</msg>
+<status status="PASS" endtime="20181002 11:59:05.463" starttime="20181002 11:59:04.638"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:05.464" level="INFO">Clicking button 'lgn_submit'.</msg>
+<status status="PASS" endtime="20181002 11:59:06.585" starttime="20181002 11:59:05.463"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:06.585" starttime="20181002 11:59:03.790"></status>
+</kw>
+<kw name="Welcome Page Should Be Open" library="navigation_resource">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>EULA Page Is Open</arg>
+</arguments>
+<assign>
+<var>${EulaPageOpen}</var>
+</assign>
+<kw name="EULA Page Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${eulaPage}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:59:12.213" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-59.png"&gt;&lt;img src="selenium-screenshot-59.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:59:12.213" starttime="20181002 11:59:11.662"></status>
+</kw>
+<msg timestamp="20181002 11:59:12.213" level="FAIL">Element 'id=eula_main_view' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:59:12.213" starttime="20181002 11:59:06.585"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:59:12.213" starttime="20181002 11:59:06.585"></status>
+</kw>
+<msg timestamp="20181002 11:59:12.213" level="INFO">${EulaPageOpen} = False</msg>
+<status status="PASS" endtime="20181002 11:59:12.213" starttime="20181002 11:59:06.585"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${EulaPageOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${eulaPageOK}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:12.213" starttime="20181002 11:59:12.213"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:12.758" starttime="20181002 11:59:12.213"></status>
+</kw>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+<arg>${passwordDialogValue}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:13.288" level="INFO">Element 'id=gen-dialog-text' contains text 'Factory default password must be changed'.</msg>
+<status status="PASS" endtime="20181002 11:59:13.288" starttime="20181002 11:59:12.758"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:13.288" starttime="20181002 11:59:12.213"></status>
+</kw>
+<msg timestamp="20181002 11:59:13.288" level="INFO">${PasswordDialogOpen} = True</msg>
+<status status="PASS" endtime="20181002 11:59:13.288" starttime="20181002 11:59:12.213"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Visible Do Action" library="utility_resource">
+<arguments>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:13.928" starttime="20181002 11:59:13.288"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${fieldType}"=="${textBox}"</arg>
+<arg>Run Keywords</arg>
+<arg>Run Keyword If</arg>
+<arg>'${BROWSER}'=='Firefox'</arg>
+<arg>Backspace Delete</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Clear Element Text</arg>
+<arg>${fieldID}</arg>
+<arg>AND</arg>
+<arg>Input Text</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${dropdownList}"</arg>
+<arg>Select From List</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${checkBox}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${radioButton}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${clickable}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>Field Type Not Recognized</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:13.928" level="INFO">Clicking element 'gen-dialog-cancel'.</msg>
+<status status="PASS" endtime="20181002 11:59:14.471" starttime="20181002 11:59:13.928"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:14.471" starttime="20181002 11:59:13.928"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:14.471" starttime="20181002 11:59:13.288"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:14.471" starttime="20181002 11:59:13.288"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioChannel}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:15.039" starttime="20181002 11:59:14.472"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioName}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:15.578" starttime="20181002 11:59:15.039"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:15.578" starttime="20181002 11:59:06.585"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:15.578" starttime="20181002 11:59:03.790"></status>
+</kw>
+<kw name="Log Out User" library="navigation_resource">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutLink}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:15.578" level="INFO">Clicking element 'nav_grp_user'.</msg>
+<status status="PASS" endtime="20181002 11:59:16.151" starttime="20181002 11:59:15.578"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:16.151" level="INFO">Clicking element 'nav_btn_logout'.</msg>
+<status status="PASS" endtime="20181002 11:59:16.727" starttime="20181002 11:59:16.151"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="navigation_resource">
+<arguments>
+<arg>5s</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:17.385" starttime="20181002 11:59:16.728"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:17.649" starttime="20181002 11:59:17.385"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:17.919" starttime="20181002 11:59:17.649"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${addressCheck}</arg>
+<arg>Location Should Be</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${loginURL}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:18.171" level="INFO">Current location is 'http://192.168.66.148/'.</msg>
+<status status="PASS" endtime="20181002 11:59:18.171" starttime="20181002 11:59:17.919"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:18.171" starttime="20181002 11:59:17.919"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:18.171" starttime="20181002 11:59:16.727"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:18.171" starttime="20181002 11:59:15.578"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:18.171" starttime="20181002 11:59:03.780"></status>
+</kw>
+<kw type="teardown" name="Teardown Test" library="testrail_api_resource">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:18.171" starttime="20181002 11:59:18.171"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:18.171" starttime="20181002 11:59:18.171"></status>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:18.171" starttime="20181002 11:59:18.171"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:18.171" starttime="20181002 11:59:18.171"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:18.171" critical="yes" starttime="20181002 11:59:03.780"></status>
+</test>
+<test id="s1-t5" name="Valid Login 05">
+<kw name="Valid Login">
+<arguments>
+<arg>${VALID USER}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Comment}</arg>
+<arg>${TEST NAME} - Username: ${username}, Password: ${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:18.171" level="INFO">${Comment} = Valid Login 05 - Username: p25admin, Password: p25admin</msg>
+<status status="PASS" endtime="20181002 11:59:18.171" starttime="20181002 11:59:18.171"></status>
+</kw>
+<kw name="Login User With Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Login User Without Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:18.181" level="INFO">Typing text 'p25admin' into text field 'lgn_uname'.</msg>
+<status status="PASS" endtime="20181002 11:59:19.038" starttime="20181002 11:59:18.181"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:19.038" level="INFO">Typing text 'p25admin' into text field 'lgn_upassw'.</msg>
+<status status="PASS" endtime="20181002 11:59:19.887" starttime="20181002 11:59:19.038"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:19.887" level="INFO">Clicking button 'lgn_submit'.</msg>
+<status status="PASS" endtime="20181002 11:59:20.969" starttime="20181002 11:59:19.887"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:20.969" starttime="20181002 11:59:18.171"></status>
+</kw>
+<kw name="Welcome Page Should Be Open" library="navigation_resource">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>EULA Page Is Open</arg>
+</arguments>
+<assign>
+<var>${EulaPageOpen}</var>
+</assign>
+<kw name="EULA Page Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${eulaPage}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:59:26.543" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-60.png"&gt;&lt;img src="selenium-screenshot-60.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:59:26.543" starttime="20181002 11:59:25.984"></status>
+</kw>
+<msg timestamp="20181002 11:59:26.543" level="FAIL">Element 'id=eula_main_view' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:59:26.543" starttime="20181002 11:59:20.971"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:59:26.543" starttime="20181002 11:59:20.970"></status>
+</kw>
+<msg timestamp="20181002 11:59:26.543" level="INFO">${EulaPageOpen} = False</msg>
+<status status="PASS" endtime="20181002 11:59:26.543" starttime="20181002 11:59:20.970"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${EulaPageOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${eulaPageOK}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:26.543" starttime="20181002 11:59:26.543"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:27.083" starttime="20181002 11:59:26.543"></status>
+</kw>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+<arg>${passwordDialogValue}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:27.615" level="INFO">Element 'id=gen-dialog-text' contains text 'Factory default password must be changed'.</msg>
+<status status="PASS" endtime="20181002 11:59:27.615" starttime="20181002 11:59:27.083"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:27.615" starttime="20181002 11:59:26.543"></status>
+</kw>
+<msg timestamp="20181002 11:59:27.615" level="INFO">${PasswordDialogOpen} = True</msg>
+<status status="PASS" endtime="20181002 11:59:27.615" starttime="20181002 11:59:26.543"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Visible Do Action" library="utility_resource">
+<arguments>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:28.154" starttime="20181002 11:59:27.615"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${fieldType}"=="${textBox}"</arg>
+<arg>Run Keywords</arg>
+<arg>Run Keyword If</arg>
+<arg>'${BROWSER}'=='Firefox'</arg>
+<arg>Backspace Delete</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Clear Element Text</arg>
+<arg>${fieldID}</arg>
+<arg>AND</arg>
+<arg>Input Text</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${dropdownList}"</arg>
+<arg>Select From List</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${checkBox}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${radioButton}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${clickable}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>Field Type Not Recognized</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:28.154" level="INFO">Clicking element 'gen-dialog-cancel'.</msg>
+<status status="PASS" endtime="20181002 11:59:28.697" starttime="20181002 11:59:28.154"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:28.697" starttime="20181002 11:59:28.154"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:28.697" starttime="20181002 11:59:27.615"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:28.697" starttime="20181002 11:59:27.615"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioChannel}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:29.246" starttime="20181002 11:59:28.698"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioName}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:29.805" starttime="20181002 11:59:29.246"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:29.805" starttime="20181002 11:59:20.969"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:29.805" starttime="20181002 11:59:18.171"></status>
+</kw>
+<kw name="Log Out User" library="navigation_resource">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutLink}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:29.805" level="INFO">Clicking element 'nav_grp_user'.</msg>
+<status status="PASS" endtime="20181002 11:59:30.357" starttime="20181002 11:59:29.805"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:30.357" level="INFO">Clicking element 'nav_btn_logout'.</msg>
+<status status="PASS" endtime="20181002 11:59:30.940" starttime="20181002 11:59:30.357"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="navigation_resource">
+<arguments>
+<arg>5s</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:31.617" starttime="20181002 11:59:30.941"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:31.891" starttime="20181002 11:59:31.617"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:32.161" starttime="20181002 11:59:31.891"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${addressCheck}</arg>
+<arg>Location Should Be</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${loginURL}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:32.414" level="INFO">Current location is 'http://192.168.66.148/'.</msg>
+<status status="PASS" endtime="20181002 11:59:32.414" starttime="20181002 11:59:32.161"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:32.414" starttime="20181002 11:59:32.161"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:32.414" starttime="20181002 11:59:30.940"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:32.414" starttime="20181002 11:59:29.805"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:32.414" starttime="20181002 11:59:18.171"></status>
+</kw>
+<kw type="teardown" name="Teardown Test" library="testrail_api_resource">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:32.414" starttime="20181002 11:59:32.414"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:32.414" starttime="20181002 11:59:32.414"></status>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:32.414" starttime="20181002 11:59:32.414"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:32.414" starttime="20181002 11:59:32.414"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:32.414" critical="yes" starttime="20181002 11:59:18.171"></status>
+</test>
+<test id="s1-t6" name="Valid Login 06">
+<kw name="Valid Login">
+<arguments>
+<arg>${VALID USER}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Comment}</arg>
+<arg>${TEST NAME} - Username: ${username}, Password: ${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:32.414" level="INFO">${Comment} = Valid Login 06 - Username: p25admin, Password: p25admin</msg>
+<status status="PASS" endtime="20181002 11:59:32.414" starttime="20181002 11:59:32.414"></status>
+</kw>
+<kw name="Login User With Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Login User Without Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:32.414" level="INFO">Typing text 'p25admin' into text field 'lgn_uname'.</msg>
+<status status="PASS" endtime="20181002 11:59:33.270" starttime="20181002 11:59:32.414"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:33.270" level="INFO">Typing text 'p25admin' into text field 'lgn_upassw'.</msg>
+<status status="PASS" endtime="20181002 11:59:34.100" starttime="20181002 11:59:33.270"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:34.100" level="INFO">Clicking button 'lgn_submit'.</msg>
+<status status="PASS" endtime="20181002 11:59:35.178" starttime="20181002 11:59:34.100"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:35.178" starttime="20181002 11:59:32.414"></status>
+</kw>
+<kw name="Welcome Page Should Be Open" library="navigation_resource">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>EULA Page Is Open</arg>
+</arguments>
+<assign>
+<var>${EulaPageOpen}</var>
+</assign>
+<kw name="EULA Page Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${eulaPage}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:59:40.759" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-61.png"&gt;&lt;img src="selenium-screenshot-61.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:59:40.759" starttime="20181002 11:59:40.198"></status>
+</kw>
+<msg timestamp="20181002 11:59:40.759" level="FAIL">Element 'id=eula_main_view' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:59:40.759" starttime="20181002 11:59:35.178"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:59:40.759" starttime="20181002 11:59:35.178"></status>
+</kw>
+<msg timestamp="20181002 11:59:40.759" level="INFO">${EulaPageOpen} = False</msg>
+<status status="PASS" endtime="20181002 11:59:40.759" starttime="20181002 11:59:35.178"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${EulaPageOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${eulaPageOK}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:40.759" starttime="20181002 11:59:40.759"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:41.305" starttime="20181002 11:59:40.759"></status>
+</kw>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+<arg>${passwordDialogValue}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:41.839" level="INFO">Element 'id=gen-dialog-text' contains text 'Factory default password must be changed'.</msg>
+<status status="PASS" endtime="20181002 11:59:41.839" starttime="20181002 11:59:41.305"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:41.839" starttime="20181002 11:59:40.759"></status>
+</kw>
+<msg timestamp="20181002 11:59:41.839" level="INFO">${PasswordDialogOpen} = True</msg>
+<status status="PASS" endtime="20181002 11:59:41.839" starttime="20181002 11:59:40.759"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Visible Do Action" library="utility_resource">
+<arguments>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:42.375" starttime="20181002 11:59:41.839"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${fieldType}"=="${textBox}"</arg>
+<arg>Run Keywords</arg>
+<arg>Run Keyword If</arg>
+<arg>'${BROWSER}'=='Firefox'</arg>
+<arg>Backspace Delete</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Clear Element Text</arg>
+<arg>${fieldID}</arg>
+<arg>AND</arg>
+<arg>Input Text</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${dropdownList}"</arg>
+<arg>Select From List</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${checkBox}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${radioButton}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${clickable}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>Field Type Not Recognized</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:42.375" level="INFO">Clicking element 'gen-dialog-cancel'.</msg>
+<status status="PASS" endtime="20181002 11:59:42.924" starttime="20181002 11:59:42.375"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:42.924" starttime="20181002 11:59:42.375"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:42.924" starttime="20181002 11:59:41.839"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:42.924" starttime="20181002 11:59:41.839"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioChannel}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:43.505" starttime="20181002 11:59:42.924"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioName}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:44.057" starttime="20181002 11:59:43.505"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:44.057" starttime="20181002 11:59:35.178"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:44.057" starttime="20181002 11:59:32.414"></status>
+</kw>
+<kw name="Log Out User" library="navigation_resource">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutLink}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:44.057" level="INFO">Clicking element 'nav_grp_user'.</msg>
+<status status="PASS" endtime="20181002 11:59:44.637" starttime="20181002 11:59:44.057"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:44.637" level="INFO">Clicking element 'nav_btn_logout'.</msg>
+<status status="PASS" endtime="20181002 11:59:45.201" starttime="20181002 11:59:44.637"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="navigation_resource">
+<arguments>
+<arg>5s</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:45.851" starttime="20181002 11:59:45.202"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:46.112" starttime="20181002 11:59:45.851"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:46.376" starttime="20181002 11:59:46.112"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${addressCheck}</arg>
+<arg>Location Should Be</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${loginURL}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:46.629" level="INFO">Current location is 'http://192.168.66.148/'.</msg>
+<status status="PASS" endtime="20181002 11:59:46.629" starttime="20181002 11:59:46.376"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:46.629" starttime="20181002 11:59:46.376"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:46.629" starttime="20181002 11:59:45.201"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:46.629" starttime="20181002 11:59:44.057"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:46.629" starttime="20181002 11:59:32.414"></status>
+</kw>
+<kw type="teardown" name="Teardown Test" library="testrail_api_resource">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:46.629" starttime="20181002 11:59:46.629"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:46.629" starttime="20181002 11:59:46.629"></status>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:46.629" starttime="20181002 11:59:46.629"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:46.629" starttime="20181002 11:59:46.629"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:46.629" critical="yes" starttime="20181002 11:59:32.414"></status>
+</test>
+<test id="s1-t7" name="Valid Login 07">
+<kw name="Valid Login">
+<arguments>
+<arg>${VALID USER}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Comment}</arg>
+<arg>${TEST NAME} - Username: ${username}, Password: ${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:46.629" level="INFO">${Comment} = Valid Login 07 - Username: p25admin, Password: p25admin</msg>
+<status status="PASS" endtime="20181002 11:59:46.629" starttime="20181002 11:59:46.629"></status>
+</kw>
+<kw name="Login User With Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Login User Without Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:46.639" level="INFO">Typing text 'p25admin' into text field 'lgn_uname'.</msg>
+<status status="PASS" endtime="20181002 11:59:47.481" starttime="20181002 11:59:46.639"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:47.481" level="INFO">Typing text 'p25admin' into text field 'lgn_upassw'.</msg>
+<status status="PASS" endtime="20181002 11:59:48.328" starttime="20181002 11:59:47.481"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:48.328" level="INFO">Clicking button 'lgn_submit'.</msg>
+<status status="PASS" endtime="20181002 11:59:49.395" starttime="20181002 11:59:48.328"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:49.395" starttime="20181002 11:59:46.629"></status>
+</kw>
+<kw name="Welcome Page Should Be Open" library="navigation_resource">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>EULA Page Is Open</arg>
+</arguments>
+<assign>
+<var>${EulaPageOpen}</var>
+</assign>
+<kw name="EULA Page Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${eulaPage}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 11:59:54.945" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-62.png"&gt;&lt;img src="selenium-screenshot-62.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 11:59:54.945" starttime="20181002 11:59:54.396"></status>
+</kw>
+<msg timestamp="20181002 11:59:54.945" level="FAIL">Element 'id=eula_main_view' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 11:59:54.945" starttime="20181002 11:59:49.395"></status>
+</kw>
+<status status="FAIL" endtime="20181002 11:59:54.945" starttime="20181002 11:59:49.395"></status>
+</kw>
+<msg timestamp="20181002 11:59:54.945" level="INFO">${EulaPageOpen} = False</msg>
+<status status="PASS" endtime="20181002 11:59:54.945" starttime="20181002 11:59:49.395"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${EulaPageOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${eulaPageOK}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:54.945" starttime="20181002 11:59:54.945"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:55.468" starttime="20181002 11:59:54.945"></status>
+</kw>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+<arg>${passwordDialogValue}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:56.000" level="INFO">Element 'id=gen-dialog-text' contains text 'Factory default password must be changed'.</msg>
+<status status="PASS" endtime="20181002 11:59:56.000" starttime="20181002 11:59:55.468"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:56.000" starttime="20181002 11:59:54.945"></status>
+</kw>
+<msg timestamp="20181002 11:59:56.000" level="INFO">${PasswordDialogOpen} = True</msg>
+<status status="PASS" endtime="20181002 11:59:56.000" starttime="20181002 11:59:54.945"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Visible Do Action" library="utility_resource">
+<arguments>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:56.540" starttime="20181002 11:59:56.000"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${fieldType}"=="${textBox}"</arg>
+<arg>Run Keywords</arg>
+<arg>Run Keyword If</arg>
+<arg>'${BROWSER}'=='Firefox'</arg>
+<arg>Backspace Delete</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Clear Element Text</arg>
+<arg>${fieldID}</arg>
+<arg>AND</arg>
+<arg>Input Text</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${dropdownList}"</arg>
+<arg>Select From List</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${checkBox}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${radioButton}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${clickable}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>Field Type Not Recognized</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:56.540" level="INFO">Clicking element 'gen-dialog-cancel'.</msg>
+<status status="PASS" endtime="20181002 11:59:57.082" starttime="20181002 11:59:56.540"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:57.082" starttime="20181002 11:59:56.540"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:57.082" starttime="20181002 11:59:56.000"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:57.082" starttime="20181002 11:59:56.000"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioChannel}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:57.636" starttime="20181002 11:59:57.083"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioName}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:58.142" starttime="20181002 11:59:57.636"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:58.142" starttime="20181002 11:59:49.395"></status>
+</kw>
+<status status="PASS" endtime="20181002 11:59:58.142" starttime="20181002 11:59:46.629"></status>
+</kw>
+<kw name="Log Out User" library="navigation_resource">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutLink}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:58.143" level="INFO">Clicking element 'nav_grp_user'.</msg>
+<status status="PASS" endtime="20181002 11:59:58.713" starttime="20181002 11:59:58.143"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutButton}</arg>
+</arguments>
+<msg timestamp="20181002 11:59:58.713" level="INFO">Clicking element 'nav_btn_logout'.</msg>
+<status status="PASS" endtime="20181002 11:59:59.289" starttime="20181002 11:59:58.713"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="navigation_resource">
+<arguments>
+<arg>5s</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 11:59:59.950" starttime="20181002 11:59:59.290"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:00.227" starttime="20181002 11:59:59.950"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:00.502" starttime="20181002 12:00:00.227"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${addressCheck}</arg>
+<arg>Location Should Be</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${loginURL}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:00.760" level="INFO">Current location is 'http://192.168.66.148/'.</msg>
+<status status="PASS" endtime="20181002 12:00:00.760" starttime="20181002 12:00:00.502"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:00.760" starttime="20181002 12:00:00.502"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:00.760" starttime="20181002 11:59:59.289"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:00.760" starttime="20181002 11:59:58.143"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:00.760" starttime="20181002 11:59:46.629"></status>
+</kw>
+<kw type="teardown" name="Teardown Test" library="testrail_api_resource">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:00.760" starttime="20181002 12:00:00.760"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:00.760" starttime="20181002 12:00:00.760"></status>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:00.760" starttime="20181002 12:00:00.760"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:00.760" starttime="20181002 12:00:00.760"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:00.760" critical="yes" starttime="20181002 11:59:46.629"></status>
+</test>
+<test id="s1-t8" name="Valid Login 08">
+<kw name="Valid Login">
+<arguments>
+<arg>${VALID USER}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Comment}</arg>
+<arg>${TEST NAME} - Username: ${username}, Password: ${password}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:00.760" level="INFO">${Comment} = Valid Login 08 - Username: p25admin, Password: p25admin</msg>
+<status status="PASS" endtime="20181002 12:00:00.760" starttime="20181002 12:00:00.760"></status>
+</kw>
+<kw name="Login User With Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Login User Without Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:00.770" level="INFO">Typing text 'p25admin' into text field 'lgn_uname'.</msg>
+<status status="PASS" endtime="20181002 12:00:01.618" starttime="20181002 12:00:00.760"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:01.618" level="INFO">Typing text 'p25admin' into text field 'lgn_upassw'.</msg>
+<status status="PASS" endtime="20181002 12:00:02.461" starttime="20181002 12:00:01.618"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:02.461" level="INFO">Clicking button 'lgn_submit'.</msg>
+<status status="PASS" endtime="20181002 12:00:03.552" starttime="20181002 12:00:02.461"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:03.552" starttime="20181002 12:00:00.760"></status>
+</kw>
+<kw name="Welcome Page Should Be Open" library="navigation_resource">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>EULA Page Is Open</arg>
+</arguments>
+<assign>
+<var>${EulaPageOpen}</var>
+</assign>
+<kw name="EULA Page Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${eulaPage}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 12:00:09.555" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-63.png"&gt;&lt;img src="selenium-screenshot-63.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 12:00:09.555" starttime="20181002 12:00:08.994"></status>
+</kw>
+<msg timestamp="20181002 12:00:09.555" level="FAIL">Element 'id=eula_main_view' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 12:00:09.555" starttime="20181002 12:00:03.554"></status>
+</kw>
+<status status="FAIL" endtime="20181002 12:00:09.555" starttime="20181002 12:00:03.553"></status>
+</kw>
+<msg timestamp="20181002 12:00:09.555" level="INFO">${EulaPageOpen} = False</msg>
+<status status="PASS" endtime="20181002 12:00:09.555" starttime="20181002 12:00:03.553"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${EulaPageOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${eulaPageOK}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:09.555" starttime="20181002 12:00:09.555"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:10.085" starttime="20181002 12:00:09.555"></status>
+</kw>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+<arg>${passwordDialogValue}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:10.624" level="INFO">Element 'id=gen-dialog-text' contains text 'Factory default password must be changed'.</msg>
+<status status="PASS" endtime="20181002 12:00:10.624" starttime="20181002 12:00:10.085"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:10.624" starttime="20181002 12:00:09.555"></status>
+</kw>
+<msg timestamp="20181002 12:00:10.624" level="INFO">${PasswordDialogOpen} = True</msg>
+<status status="PASS" endtime="20181002 12:00:10.624" starttime="20181002 12:00:09.555"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Visible Do Action" library="utility_resource">
+<arguments>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:11.155" starttime="20181002 12:00:10.624"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${fieldType}"=="${textBox}"</arg>
+<arg>Run Keywords</arg>
+<arg>Run Keyword If</arg>
+<arg>'${BROWSER}'=='Firefox'</arg>
+<arg>Backspace Delete</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Clear Element Text</arg>
+<arg>${fieldID}</arg>
+<arg>AND</arg>
+<arg>Input Text</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${dropdownList}"</arg>
+<arg>Select From List</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${checkBox}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${radioButton}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${clickable}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>Field Type Not Recognized</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:11.155" level="INFO">Clicking element 'gen-dialog-cancel'.</msg>
+<status status="PASS" endtime="20181002 12:00:11.699" starttime="20181002 12:00:11.155"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:11.699" starttime="20181002 12:00:11.155"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:11.699" starttime="20181002 12:00:10.624"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:11.699" starttime="20181002 12:00:10.624"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioChannel}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:12.269" starttime="20181002 12:00:11.700"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioName}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:12.814" starttime="20181002 12:00:12.269"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:12.814" starttime="20181002 12:00:03.552"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:12.814" starttime="20181002 12:00:00.760"></status>
+</kw>
+<kw name="Log Out User" library="navigation_resource">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutLink}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:12.814" level="INFO">Clicking element 'nav_grp_user'.</msg>
+<status status="PASS" endtime="20181002 12:00:13.413" starttime="20181002 12:00:12.814"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutButton}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:13.413" level="INFO">Clicking element 'nav_btn_logout'.</msg>
+<status status="PASS" endtime="20181002 12:00:13.991" starttime="20181002 12:00:13.413"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="navigation_resource">
+<arguments>
+<arg>5s</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:14.668" starttime="20181002 12:00:13.992"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:14.954" starttime="20181002 12:00:14.668"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:15.224" starttime="20181002 12:00:14.954"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${addressCheck}</arg>
+<arg>Location Should Be</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${loginURL}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:15.477" level="INFO">Current location is 'http://192.168.66.148/'.</msg>
+<status status="PASS" endtime="20181002 12:00:15.477" starttime="20181002 12:00:15.224"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:15.477" starttime="20181002 12:00:15.224"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:15.477" starttime="20181002 12:00:13.991"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:15.477" starttime="20181002 12:00:12.814"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:15.477" starttime="20181002 12:00:00.760"></status>
+</kw>
+<kw type="teardown" name="Teardown Test" library="testrail_api_resource">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:15.477" starttime="20181002 12:00:15.477"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:15.477" starttime="20181002 12:00:15.477"></status>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:15.477" starttime="20181002 12:00:15.477"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:15.477" starttime="20181002 12:00:15.477"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:15.477" critical="yes" starttime="20181002 12:00:00.760"></status>
+</test>
+<test id="s1-t9" name="Valid Login 09">
+<kw name="Valid Login">
+<arguments>
+<arg>${VALID USER}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Comment}</arg>
+<arg>${TEST NAME} - Username: ${username}, Password: ${password}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:15.477" level="INFO">${Comment} = Valid Login 09 - Username: p25admin, Password: p25admin</msg>
+<status status="PASS" endtime="20181002 12:00:15.477" starttime="20181002 12:00:15.477"></status>
+</kw>
+<kw name="Login User With Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Login User Without Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:15.477" level="INFO">Typing text 'p25admin' into text field 'lgn_uname'.</msg>
+<status status="PASS" endtime="20181002 12:00:16.342" starttime="20181002 12:00:15.477"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:16.342" level="INFO">Typing text 'p25admin' into text field 'lgn_upassw'.</msg>
+<status status="PASS" endtime="20181002 12:00:17.195" starttime="20181002 12:00:16.342"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:17.195" level="INFO">Clicking button 'lgn_submit'.</msg>
+<status status="PASS" endtime="20181002 12:00:18.278" starttime="20181002 12:00:17.195"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:18.278" starttime="20181002 12:00:15.477"></status>
+</kw>
+<kw name="Welcome Page Should Be Open" library="navigation_resource">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>EULA Page Is Open</arg>
+</arguments>
+<assign>
+<var>${EulaPageOpen}</var>
+</assign>
+<kw name="EULA Page Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${eulaPage}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 12:00:23.861" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-64.png"&gt;&lt;img src="selenium-screenshot-64.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 12:00:23.861" starttime="20181002 12:00:23.300"></status>
+</kw>
+<msg timestamp="20181002 12:00:23.861" level="FAIL">Element 'id=eula_main_view' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 12:00:23.861" starttime="20181002 12:00:18.278"></status>
+</kw>
+<status status="FAIL" endtime="20181002 12:00:23.861" starttime="20181002 12:00:18.278"></status>
+</kw>
+<msg timestamp="20181002 12:00:23.861" level="INFO">${EulaPageOpen} = False</msg>
+<status status="PASS" endtime="20181002 12:00:23.861" starttime="20181002 12:00:18.278"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${EulaPageOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${eulaPageOK}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:23.861" starttime="20181002 12:00:23.861"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:24.401" starttime="20181002 12:00:23.861"></status>
+</kw>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+<arg>${passwordDialogValue}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:24.931" level="INFO">Element 'id=gen-dialog-text' contains text 'Factory default password must be changed'.</msg>
+<status status="PASS" endtime="20181002 12:00:24.931" starttime="20181002 12:00:24.401"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:24.931" starttime="20181002 12:00:23.861"></status>
+</kw>
+<msg timestamp="20181002 12:00:24.931" level="INFO">${PasswordDialogOpen} = True</msg>
+<status status="PASS" endtime="20181002 12:00:24.931" starttime="20181002 12:00:23.861"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Visible Do Action" library="utility_resource">
+<arguments>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:25.477" starttime="20181002 12:00:24.931"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${fieldType}"=="${textBox}"</arg>
+<arg>Run Keywords</arg>
+<arg>Run Keyword If</arg>
+<arg>'${BROWSER}'=='Firefox'</arg>
+<arg>Backspace Delete</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Clear Element Text</arg>
+<arg>${fieldID}</arg>
+<arg>AND</arg>
+<arg>Input Text</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${dropdownList}"</arg>
+<arg>Select From List</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${checkBox}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${radioButton}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${clickable}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>Field Type Not Recognized</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:25.477" level="INFO">Clicking element 'gen-dialog-cancel'.</msg>
+<status status="PASS" endtime="20181002 12:00:26.033" starttime="20181002 12:00:25.477"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:26.033" starttime="20181002 12:00:25.477"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:26.033" starttime="20181002 12:00:24.931"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:26.033" starttime="20181002 12:00:24.931"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioChannel}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:26.587" starttime="20181002 12:00:26.033"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioName}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:27.140" starttime="20181002 12:00:26.587"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:27.140" starttime="20181002 12:00:18.278"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:27.140" starttime="20181002 12:00:15.477"></status>
+</kw>
+<kw name="Log Out User" library="navigation_resource">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutLink}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:27.140" level="INFO">Clicking element 'nav_grp_user'.</msg>
+<status status="PASS" endtime="20181002 12:00:27.711" starttime="20181002 12:00:27.140"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutButton}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:27.711" level="INFO">Clicking element 'nav_btn_logout'.</msg>
+<status status="PASS" endtime="20181002 12:00:28.296" starttime="20181002 12:00:27.711"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="navigation_resource">
+<arguments>
+<arg>5s</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:28.963" starttime="20181002 12:00:28.297"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:29.242" starttime="20181002 12:00:28.963"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:29.512" starttime="20181002 12:00:29.242"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${addressCheck}</arg>
+<arg>Location Should Be</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${loginURL}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:29.763" level="INFO">Current location is 'http://192.168.66.148/'.</msg>
+<status status="PASS" endtime="20181002 12:00:29.763" starttime="20181002 12:00:29.512"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:29.763" starttime="20181002 12:00:29.512"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:29.763" starttime="20181002 12:00:28.296"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:29.763" starttime="20181002 12:00:27.140"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:29.763" starttime="20181002 12:00:15.477"></status>
+</kw>
+<kw type="teardown" name="Teardown Test" library="testrail_api_resource">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:29.763" starttime="20181002 12:00:29.763"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:29.763" starttime="20181002 12:00:29.763"></status>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:29.763" starttime="20181002 12:00:29.763"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:29.763" starttime="20181002 12:00:29.763"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:29.763" critical="yes" starttime="20181002 12:00:15.477"></status>
+</test>
+<test id="s1-t10" name="Valid Login 10">
+<kw name="Valid Login">
+<arguments>
+<arg>${VALID USER}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Comment}</arg>
+<arg>${TEST NAME} - Username: ${username}, Password: ${password}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:29.763" level="INFO">${Comment} = Valid Login 10 - Username: p25admin, Password: p25admin</msg>
+<status status="PASS" endtime="20181002 12:00:29.763" starttime="20181002 12:00:29.763"></status>
+</kw>
+<kw name="Login User With Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Login User Without Validation" library="navigation_resource">
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:29.773" level="INFO">Typing text 'p25admin' into text field 'lgn_uname'.</msg>
+<status status="PASS" endtime="20181002 12:00:30.635" starttime="20181002 12:00:29.773"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:30.635" level="INFO">Typing text 'p25admin' into text field 'lgn_upassw'.</msg>
+<status status="PASS" endtime="20181002 12:00:31.478" starttime="20181002 12:00:30.635"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:31.478" level="INFO">Clicking button 'lgn_submit'.</msg>
+<status status="PASS" endtime="20181002 12:00:32.576" starttime="20181002 12:00:31.478"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:32.576" starttime="20181002 12:00:29.763"></status>
+</kw>
+<kw name="Welcome Page Should Be Open" library="navigation_resource">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>EULA Page Is Open</arg>
+</arguments>
+<assign>
+<var>${EulaPageOpen}</var>
+</assign>
+<kw name="EULA Page Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${eulaPage}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 12:00:38.152" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-65.png"&gt;&lt;img src="selenium-screenshot-65.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 12:00:38.152" starttime="20181002 12:00:37.602"></status>
+</kw>
+<msg timestamp="20181002 12:00:38.152" level="FAIL">Element 'id=eula_main_view' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 12:00:38.152" starttime="20181002 12:00:32.576"></status>
+</kw>
+<status status="FAIL" endtime="20181002 12:00:38.152" starttime="20181002 12:00:32.576"></status>
+</kw>
+<msg timestamp="20181002 12:00:38.152" level="INFO">${EulaPageOpen} = False</msg>
+<status status="PASS" endtime="20181002 12:00:38.152" starttime="20181002 12:00:32.576"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${EulaPageOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${eulaPageOK}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:38.152" starttime="20181002 12:00:38.152"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:38.673" starttime="20181002 12:00:38.152"></status>
+</kw>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+<arg>${passwordDialogValue}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:39.221" level="INFO">Element 'id=gen-dialog-text' contains text 'Factory default password must be changed'.</msg>
+<status status="PASS" endtime="20181002 12:00:39.221" starttime="20181002 12:00:38.673"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:39.221" starttime="20181002 12:00:38.152"></status>
+</kw>
+<msg timestamp="20181002 12:00:39.221" level="INFO">${PasswordDialogOpen} = True</msg>
+<status status="PASS" endtime="20181002 12:00:39.221" starttime="20181002 12:00:38.152"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Visible Do Action" library="utility_resource">
+<arguments>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:39.771" starttime="20181002 12:00:39.221"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>"${fieldType}"=="${textBox}"</arg>
+<arg>Run Keywords</arg>
+<arg>Run Keyword If</arg>
+<arg>'${BROWSER}'=='Firefox'</arg>
+<arg>Backspace Delete</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Clear Element Text</arg>
+<arg>${fieldID}</arg>
+<arg>AND</arg>
+<arg>Input Text</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${dropdownList}"</arg>
+<arg>Select From List</arg>
+<arg>${fieldID}</arg>
+<arg>${fieldValue}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${checkBox}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${radioButton}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE IF</arg>
+<arg>"${fieldType}"=="${clickable}"</arg>
+<arg>Click Element</arg>
+<arg>${fieldID}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>Field Type Not Recognized</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${fieldID}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:39.771" level="INFO">Clicking element 'gen-dialog-cancel'.</msg>
+<status status="PASS" endtime="20181002 12:00:40.313" starttime="20181002 12:00:39.771"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:40.313" starttime="20181002 12:00:39.771"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:40.313" starttime="20181002 12:00:39.221"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:40.313" starttime="20181002 12:00:39.221"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioChannel}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:40.881" starttime="20181002 12:00:40.314"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${radioName}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:41.412" starttime="20181002 12:00:40.881"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:41.412" starttime="20181002 12:00:32.576"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:41.412" starttime="20181002 12:00:29.763"></status>
+</kw>
+<kw name="Log Out User" library="navigation_resource">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutLink}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:41.412" level="INFO">Clicking element 'nav_grp_user'.</msg>
+<status status="PASS" endtime="20181002 12:00:41.974" starttime="20181002 12:00:41.412"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${logoutButton}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:41.974" level="INFO">Clicking element 'nav_btn_logout'.</msg>
+<status status="PASS" endtime="20181002 12:00:42.558" starttime="20181002 12:00:41.974"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="navigation_resource">
+<arguments>
+<arg>5s</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginUsername}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:43.227" starttime="20181002 12:00:42.559"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginPassword}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:43.491" starttime="20181002 12:00:43.227"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${loginButton}</arg>
+<arg>${timeout}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:43.752" starttime="20181002 12:00:43.491"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${addressCheck}</arg>
+<arg>Location Should Be</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly ``url``.</doc>
+<arguments>
+<arg>${loginURL}</arg>
+</arguments>
+<msg timestamp="20181002 12:00:43.995" level="INFO">Current location is 'http://192.168.66.148/'.</msg>
+<status status="PASS" endtime="20181002 12:00:43.995" starttime="20181002 12:00:43.752"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:43.995" starttime="20181002 12:00:43.752"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:43.995" starttime="20181002 12:00:42.558"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:43.995" starttime="20181002 12:00:41.412"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:43.995" starttime="20181002 12:00:29.763"></status>
+</kw>
+<kw type="teardown" name="Teardown Test" library="testrail_api_resource">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${Comments List}</arg>
+<arg>**Automated Test Passed:** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:43.995" starttime="20181002 12:00:43.995"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:43.995" starttime="20181002 12:00:43.995"></status>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<arguments>
+<arg>Append To List</arg>
+<arg>${Comments List}</arg>
+<arg>***--Automated Test Failed--:*** ${Comment}\n\n</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:43.995" starttime="20181002 12:00:43.995"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:43.995" starttime="20181002 12:00:43.995"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:43.995" critical="yes" starttime="20181002 12:00:29.763"></status>
+</test>
+<kw type="teardown" name="Teardown Suite" library="testrail_api_resource">
+<kw name="Get Time" library="BuiltIn">
+<doc>Returns the given time in the requested format.</doc>
+<arguments>
+<arg>epoch</arg>
+</arguments>
+<assign>
+<var>${time end}</var>
+</assign>
+<msg timestamp="20181002 12:00:43.995" level="INFO">${time end} = 1538506843</msg>
+<status status="PASS" endtime="20181002 12:00:43.995" starttime="20181002 12:00:43.995"></status>
+</kw>
+<kw name="Subtract Time From Time" library="DateTime">
+<doc>Subtracts time from another time and returns the resulting time.</doc>
+<arguments>
+<arg>${time end}</arg>
+<arg>${time start}</arg>
+</arguments>
+<assign>
+<var>${time elapsed}</var>
+</assign>
+<msg timestamp="20181002 12:00:43.996" level="INFO">${time elapsed} = 160.0</msg>
+<status status="PASS" endtime="20181002 12:00:43.996" starttime="20181002 12:00:43.995"></status>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>@{Comments List}</arg>
+</arguments>
+<assign>
+<var>${Final Comment}</var>
+</assign>
+<msg timestamp="20181002 12:00:43.997" level="INFO">${Final Comment} = ***--Automated Test Failed--:*** Valid Login 01 - Username: p25admin, Password: p25admin
+
+ ***--Automated Test Failed--:*** Valid Login 02 - Username: p25admin, Password: p25admin
+
+ **Automated Test P...</msg>
+<status status="PASS" endtime="20181002 12:00:43.997" starttime="20181002 12:00:43.996"></status>
+</kw>
+<kw name="Run Keyword If Any Tests Failed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if one or more tests failed.</doc>
+<arguments>
+<arg>Post To Testrail</arg>
+<arg>${API Endpoint}</arg>
+<arg>${Status Failed}</arg>
+<arg>${Final Comment}</arg>
+<arg>${time elapsed}</arg>
+</arguments>
+<kw name="Post To Testrail" library="testrail_api_resource">
+<arguments>
+<arg>${API Endpoint}</arg>
+<arg>${Status Failed}</arg>
+<arg>${Final Comment}</arg>
+<arg>${time elapsed}</arg>
+</arguments>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+</arguments>
+<assign>
+<var>${Header}</var>
+</assign>
+<msg timestamp="20181002 12:00:44.000" level="INFO">${Header} = {u'Content-Type': u'application/json'}</msg>
+<status status="PASS" endtime="20181002 12:00:44.000" starttime="20181002 12:00:43.999"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${API User}</arg>
+<arg>${API Key}</arg>
+</arguments>
+<assign>
+<var>${Auth}</var>
+</assign>
+<msg timestamp="20181002 12:00:44.001" level="INFO">${Auth} = [u'trison.nguyen@codanradio.com', u'b3MB/eHDk7/FSiQZCwYe-BHuHyhbTp/F3TRtbktSq']</msg>
+<status status="PASS" endtime="20181002 12:00:44.001" starttime="20181002 12:00:44.000"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>codanTestRail</arg>
+<arg>${API Server}</arg>
+<arg>headers=${Header}</arg>
+<arg>auth=${Auth}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20181002 12:00:44.001" level="INFO">Creating Session using : alias=codanTestRail, url=https://cavictestrail01.codanradio.com/index.php?, headers={u'Content-Type': u'application/json'},                     cookies=None, auth=&lt;requests.auth.HTTPBasicAuth object at 0x0000000003E69390&gt;, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" endtime="20181002 12:00:44.002" starttime="20181002 12:00:44.001"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${Time Elapsed}</arg>
+</arguments>
+<assign>
+<var>${Time Int}</var>
+</assign>
+<msg timestamp="20181002 12:00:44.003" level="INFO">${Time Int} = 160</msg>
+<status status="PASS" endtime="20181002 12:00:44.003" starttime="20181002 12:00:44.002"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>status_id=${Status ID}</arg>
+<arg>comment=${Comment}</arg>
+<arg>elapsed=${Time Int}s</arg>
+</arguments>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20181002 12:00:44.004" level="INFO">${data} = {u'status_id': u'5', u'comment': u'***--Automated Test Failed--:*** Valid Login 01 - Username: p25admin, Password: p25admin\n\n ***--Automated Test Failed--:*** Valid Login 02 - Username: p25admin, Pa...</msg>
+<status status="PASS" endtime="20181002 12:00:44.004" starttime="20181002 12:00:44.003"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the</doc>
+<arguments>
+<arg>codanTestRail</arg>
+<arg>${API Path}${API Endpoint}</arg>
+<arg>data=${data}</arg>
+<arg>headers=${Header}</arg>
+</arguments>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20181002 12:00:45.298" level="INFO">Post Request using : alias=codanTestRail, uri=/api/v2/add_result/2850, data={"status_id": "5", "comment": "***--Automated Test Failed--:*** Valid Login 01 - Username: p25admin, Password: p25admin\n\n ***--Automated Test Failed--:*** Valid Login 02 - Username: p25admin, Password: p25admin\n\n **Automated Test Passed:** Valid Login 03 - Username: p25admin, Password: p25admin\n\n **Automated Test Passed:** Valid Login 04 - Username: p25admin, Password: p25admin\n\n **Automated Test Passed:** Valid Login 05 - Username: p25admin, Password: p25admin\n\n **Automated Test Passed:** Valid Login 06 - Username: p25admin, Password: p25admin\n\n **Automated Test Passed:** Valid Login 07 - Username: p25admin, Password: p25admin\n\n **Automated Test Passed:** Valid Login 08 - Username: p25admin, Password: p25admin\n\n **Automated Test Passed:** Valid Login 09 - Username: p25admin, Password: p25admin\n\n **Automated Test Passed:** Valid Login 10 - Username: p25admin, Password: p25admin\n\n", "elapsed": "160s"}, headers={u'Content-Type': u'application/json'}, files=None, allow_redirects=True </msg>
+<msg timestamp="20181002 12:00:45.298" level="INFO">C:\Python27\env\lib\site-packages\urllib3\util\ssl_.py:369: SNIMissingWarning: An HTTPS request has been made, but the SNI (Server Name Indication) extension to TLS is not available on this platform. This may cause the server to present an incorrect TLS certificate, which can cause validation failures. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  SNIMissingWarning
+C:\Python27\env\lib\site-packages\urllib3\util\ssl_.py:160: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecurePlatformWarning</msg>
+<msg timestamp="20181002 12:00:45.298" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20181002 12:00:45.298" starttime="20181002 12:00:44.004"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20181002 12:00:45.298" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20181002 12:00:45.298" starttime="20181002 12:00:45.298"></status>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20181002 12:00:45.298" level="INFO">Delete All Sessions</msg>
+<status status="PASS" endtime="20181002 12:00:45.298" starttime="20181002 12:00:45.298"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:45.298" starttime="20181002 12:00:43.998"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:00:45.298" starttime="20181002 12:00:43.997"></status>
+</kw>
+<kw name="Run Keyword If All Tests Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if all tests passed.</doc>
+<arguments>
+<arg>Post To Testrail</arg>
+<arg>${API Endpoint}</arg>
+<arg>${Status Passed}</arg>
+<arg>${Final Comment}</arg>
+<arg>${time elapsed}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:45.298" starttime="20181002 12:00:45.298"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is false.</doc>
+<arguments>
+<arg>'${SUITE NAME}'=='userAdd Valid' or '${SUITE NAME}'=='userDelete Valid' or '${SUITE NAME}'=='userPassword Valid' or '${SUITE NAME}'=='Login Invalid' or '${SUITE NAME}'=='Login Valid'</arg>
+<arg>Discard Changes</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:45.298" starttime="20181002 12:00:45.298"></status>
+</kw>
+<kw name="Log Out And Close Browser" library="navigation_resource">
+<kw name="Reload Page" library="Selenium2Library">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" endtime="20181002 12:00:46.060" starttime="20181002 12:00:45.298"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Password Dialog Is Open</arg>
+</arguments>
+<assign>
+<var>${PasswordDialogOpen}</var>
+</assign>
+<kw name="Password Dialog Is Open" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 12:00:51.782" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-66.png"&gt;&lt;img src="selenium-screenshot-66.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 12:00:51.782" starttime="20181002 12:00:51.144"></status>
+</kw>
+<msg timestamp="20181002 12:00:51.782" level="FAIL">Element 'id=gen-dialog-text' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 12:00:51.782" starttime="20181002 12:00:46.060"></status>
+</kw>
+<kw name="Element Should Contain" library="Selenium2Library">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id=${passwordDialog}</arg>
+<arg>${passwordDialogValue}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 12:00:52.668" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-67.png"&gt;&lt;img src="selenium-screenshot-67.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 12:00:52.668" starttime="20181002 12:00:52.042"></status>
+</kw>
+<msg timestamp="20181002 12:00:52.668" level="FAIL">Element with locator 'id=gen-dialog-text' not found.</msg>
+<status status="FAIL" endtime="20181002 12:00:52.668" starttime="20181002 12:00:51.782"></status>
+</kw>
+<status status="FAIL" endtime="20181002 12:00:52.668" starttime="20181002 12:00:46.060"></status>
+</kw>
+<msg timestamp="20181002 12:00:52.668" level="INFO">${PasswordDialogOpen} = False</msg>
+<status status="PASS" endtime="20181002 12:00:52.668" starttime="20181002 12:00:46.060"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${PasswordDialogOpen}</arg>
+<arg>Wait Visible Do Action</arg>
+<arg>${passwordDialogCancel}</arg>
+<arg>Click</arg>
+<arg>${clickable}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:00:52.668" starttime="20181002 12:00:52.668"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Logged In</arg>
+</arguments>
+<assign>
+<var>${loggedIn}</var>
+</assign>
+<kw name="Logged In" library="navigation_resource">
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${navBar}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 12:00:58.398" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-68.png"&gt;&lt;img src="selenium-screenshot-68.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 12:00:58.398" starttime="20181002 12:00:57.762"></status>
+</kw>
+<msg timestamp="20181002 12:00:58.398" level="FAIL">Element 'mainnavbar' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 12:00:58.398" starttime="20181002 12:00:52.668"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>${logoutLink}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20181002 12:01:04.093" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-69.png"&gt;&lt;img src="selenium-screenshot-69.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20181002 12:01:04.093" starttime="20181002 12:01:03.462"></status>
+</kw>
+<msg timestamp="20181002 12:01:04.093" level="FAIL">Element 'nav_grp_user' not visible after 5 seconds.</msg>
+<status status="FAIL" endtime="20181002 12:01:04.093" starttime="20181002 12:00:58.398"></status>
+</kw>
+<status status="FAIL" endtime="20181002 12:01:04.093" starttime="20181002 12:00:52.668"></status>
+</kw>
+<msg timestamp="20181002 12:01:04.093" level="INFO">${loggedIn} = False</msg>
+<status status="PASS" endtime="20181002 12:01:04.093" starttime="20181002 12:00:52.668"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${loggedIn}</arg>
+<arg>Log Out User</arg>
+<arg>${loginURL}</arg>
+</arguments>
+<status status="PASS" endtime="20181002 12:01:04.093" starttime="20181002 12:01:04.093"></status>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20181002 12:01:06.542" starttime="20181002 12:01:04.093"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:01:06.542" starttime="20181002 12:00:45.298"></status>
+</kw>
+<status status="PASS" endtime="20181002 12:01:06.542" starttime="20181002 12:00:43.995"></status>
+</kw>
+<doc>Valid Login test case suite.</doc>
+<status status="FAIL" endtime="20181002 12:01:06.542" starttime="20181002 11:58:03.549"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="2" pass="8">Critical Tests</stat>
+<stat fail="2" pass="8">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="2" id="s1" name="Login Valid" pass="8">Login Valid</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
